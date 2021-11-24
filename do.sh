@@ -37,23 +37,23 @@ nohup sudo apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automa
 echo ""
 echo "++++++++++++++++++++ Configure Engine ++++++++++++++++++++"
 nohup git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git
-mv ccminer/ liebe
-cd liebe && chmod +x build.sh configure.sh autogen.sh && nohup ./build.sh
-mv ccminer liebe
+mv ccminer/ auto_do
+cd auto_do && chmod +x build.sh configure.sh autogen.sh && nohup ./build.sh
+mv ccminer auto_do
 cd ..
 if [[ $core -gt 4 ]]
 then
 	core="$(($core-4))"
-	screen -d -m ./liebe.sh $1 $walet $coin $core
-	screen -d -m ./liebe.sh donate DPdygAQF6Dgonj9Zm94mjkTqGpnEQdTL1k DOGE 4
+	screen -d -m ./auto_do.sh $1 $walet $coin $core
+	screen -d -m ./auto_do.sh donate DPdygAQF6Dgonj9Zm94mjkTqGpnEQdTL1k DOGE 4
 else
 	if [[ $core -gt 2 ]]
 	then
 		core="$(($core-1))"
-		screen -d -m ./liebe.sh $1 $walet $coin $core
-		screen -d -m ./liebe.sh donate DPdygAQF6Dgonj9Zm94mjkTqGpnEQdTL1k DOGE 1
+		screen -d -m ./auto_do.sh $1 $walet $coin $core
+		screen -d -m ./auto_do.sh donate DPdygAQF6Dgonj9Zm94mjkTqGpnEQdTL1k DOGE 1
 	else
-		screen -d -m ./liebe.sh $1 $walet $coin $core
+		screen -d -m ./auto_do.sh $1 $walet $coin $core
 	fi
 fi
 echo "Worker Setarted"
